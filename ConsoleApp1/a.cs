@@ -4,27 +4,24 @@ Console.WriteLine("Введите e");
 double e = double.Parse(Console.ReadLine());
 double leftExpressiont = 1 / Math.Sqrt(1 + x);
 
-Console.WriteLine(algorithm(x, e, leftExpressiont));
-//Console.WriteLine("Количество шагов: {0}  Результат: {1} ", amountOperations, res);
+algorithm(x, e, leftExpressiont);
 
-static double algorithm(double x, double e, double leftExpressiont)
+
+static void algorithm(double x, double e, double leftExpressiont)
 {
     double res = 0;
     int amountOperations = 0;
     double rightExpression = 0;
-    
-    double minusOne = -1;
-    double tmpX = x;
-    long oddFactorial = 1;
-    long evenFactorial = 1;
+    double minusOne =0;
+    double tmpX=0;
+    double oddFactorial = 1;
+    double evenFactorial = 1;
     do
     {
         if (amountOperations == 0)
         {
-
             tmpX = 1;
             minusOne = 1;
-            
         }
         else
         {
@@ -32,18 +29,13 @@ static double algorithm(double x, double e, double leftExpressiont)
             minusOne *= -1;
             oddFactorial *= 2 * amountOperations + 1;
             evenFactorial *= 2 * amountOperations;
-          //  Console.WriteLine(evenFactorial);
         }
-
-        amountOperations += 1;
-        // Console.WriteLine((minusOne * tmpX * oddFactorial) / evenFactorial,10);
-        Console.WriteLine(evenFactorial);
-       
         rightExpression += (minusOne * tmpX * oddFactorial) / evenFactorial;
         res = rightExpression;
        Console.WriteLine("общий ответ шага {0}", amountOperations);
        Console.WriteLine(res);
+        amountOperations += 1;
     } while (Math.Abs(leftExpressiont - rightExpression) >= e);
-    return res;
+    Console.WriteLine("Левое выражение: {0} Правое выражение: {1} Шаг: {2}",leftExpressiont,res,amountOperations);
+  
 }
-
