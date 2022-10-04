@@ -32,10 +32,7 @@ static void algorithm(double x, double e, double leftExpressiont)
         }
         rightExpression += (minusOne * tmpX * oddFactorial) / evenFactorial;
         res = rightExpression;
-       Console.WriteLine("общий ответ шага {0}", amountOperations);
-       Console.WriteLine(res);
         amountOperations += 1;
     } while (Math.Abs(leftExpressiont - rightExpression) >= e);
     Console.WriteLine("Левое выражение: {0} Правое выражение: {1} Шаг: {2}",leftExpressiont,res,amountOperations);
-  
 }
