@@ -160,10 +160,7 @@ else
     Console.WriteLine("no");
 }
 */
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
+
 /*
 var a = Convert.ToDouble(Console.ReadLine());
 var b = Convert.ToDouble(Console.ReadLine());
@@ -316,48 +313,49 @@ else
 {
     Console.WriteLine("false");
 }*/
-
+/*
 Console.WriteLine("Введите x");
 double x = double.Parse(Console.ReadLine());
 Console.WriteLine("Введите e");
 double e = double.Parse(Console.ReadLine());
-double res = 0;
-double amountOperations = 0;
-double rightExpression=0;
 double leftExpressiont = 1 / Math.Sqrt(1 + x);
-double minusOne = -1;
-double tmpX = x;
-double oddFactorial = 1;
-double evenFactorial = 1;
 
-do
+algorithm(x, e, leftExpressiont);
+
+
+static void algorithm(double x, double e, double leftExpressiont)
 {
-    if (amountOperations == 0)
+    double res = 0;
+    double amountOperations = 0;
+    double rightExpression = 0;
+    double minusOne =0;
+    double tmpX=0;
+    double oddFactorial = 1;
+    double evenFactorial = 1;
+    do
     {
-        tmpX = 1;
-        minusOne = 1;
-        oddFactorial = 1;
-        evenFactorial = 1;
-    }
-    else
-    {
-        tmpX *=x;
-        minusOne *=-1;
-        oddFactorial *= 2 * amountOperations + 1;
-        evenFactorial *= 2 * amountOperations;
-    }
-    
-    amountOperations += 1;
-   // Console.WriteLine(minusOne * tmpX * oddFactorial / evenFactorial);
-    rightExpression += minusOne * tmpX * oddFactorial / evenFactorial;
-    res = rightExpression;
-   // Console.WriteLine("общий ответ шага {0}", amountOperations);
-   // Console.WriteLine(res);
-} while (Math.Abs(leftExpressiont - rightExpression) > e);
-Console.WriteLine("Количество шагов: {0}  Результат: {1} ", amountOperations, res);
-
-
-
+        if (amountOperations == 0)
+        {
+            tmpX = 1;
+            minusOne = 1;
+        }
+        else
+        {
+            tmpX *= x;
+            minusOne *= -1;
+            oddFactorial *= 2 * amountOperations + 1;
+            evenFactorial *= 2 * amountOperations;
+        }
+        rightExpression += (minusOne * tmpX * oddFactorial) / evenFactorial;
+        res = rightExpression;
+       Console.WriteLine("общий ответ шага {0}", amountOperations);
+       Console.WriteLine(res);
+        amountOperations += 1;
+    } while (Math.Abs(leftExpressiont - rightExpression) >= e);
+    Console.WriteLine("Левое выражение: {0} Правое выражение: {1} Шаг: {2}",leftExpressiont,res,amountOperations);
+  
+}
+*/
 
 
 
@@ -404,3 +402,302 @@ static double algorithm(double x, double k)
 
 
 */
+using System;
+using System.Runtime.InteropServices;
+
+//int n = 10;
+//int[] arr = new int[] {1,3,-1,-2,5,78,1,-2,-2};
+
+//Random r = new Random();
+
+
+//for (int i = 0; i < n; i++)
+//    arr[i] = r.Next(-100, 101);
+
+//Задача 1 
+
+
+/*int maxminus = -1;
+int minplus = 1;
+int razmin = int.MaxValue;
+int razplus = int.MaxValue;
+int resmin = 0, resplus=0;
+
+for (int i = 0; i < n; i++)
+{
+    Console.WriteLine($"a[{i}] = {arr[i]}");
+
+   
+    if (Math.Abs(arr[i] - maxminus) < razmin&& arr[i]<0)
+    {
+        resmin = arr[i];
+        razmin=Math.Abs(arr[i] - maxminus);
+    }
+
+    if (Math.Abs(arr[i] - minplus) < razplus && arr[i] > 0)
+    {
+        resplus = arr[i];
+        razplus = Math.Abs(arr[i] - minplus);
+    }
+}
+
+Console.WriteLine(resmin);
+Console.WriteLine(resplus);
+*/
+
+//Задача 2 
+
+/*int max = int.MinValue;
+int pos = -1;
+for(int i = 0; i < (arr).Length; i++)
+{
+    Console.WriteLine($"a[{i}] = {arr[i]}");
+    if (arr[i] > max)
+    {
+        pos = i;
+        max = arr[i];
+    }
+   
+}
+Console.WriteLine(pos);
+*/
+
+
+//Задача 3
+
+/*
+int kolmin = 1;
+int last1 = -1;
+int last2 = -1;
+int last1val = 0;
+int min = int.MaxValue;
+int kol = 0;
+for(int i = 0; i < (arr).Length; i++)
+{
+    if (arr[i] == min)
+    {
+        kol += 1;
+        last1val=min;
+        min = arr[i];
+        last1 = last2;
+        last2 = i;
+        
+    }
+    else if(arr[i] < min)
+    {
+        kol = 1;
+        last1val = min;
+        min = arr[i];
+        last1 = last2;
+        last2 = i;
+
+    }
+}
+if (last1val == min)
+{
+    Console.WriteLine(last1);
+    Console.WriteLine(kol);
+}
+
+
+*/
+//Задача 4
+
+
+/*
+bool prime = false;
+ bool IsPrime(int number)
+{
+    for (int i = 2; i < number; i++)
+    {
+        if (number % i == 0)
+            return false;
+    }
+    return true;
+}
+for(int i = 0; i < (arr).Length; i++)
+{
+    if (IsPrime(arr[i]))
+    {
+        prime = true;
+        break;
+
+    }
+}
+if (prime)
+{
+    Console.WriteLine("Yes");
+}
+else
+{
+    Console.WriteLine("No");
+}
+
+*/
+
+
+//Задача 5
+
+/*int temp;
+for (int i = 0; i < arr.Length - 1; i++)
+{
+    for (int j = i + 1; j < arr.Length; j++)
+    {
+        if (arr[i] > arr[j])
+        {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+}
+
+bool povtor = false;
+for(int i = 0; i < arr.Length-1; i++)
+{
+    if (arr[i] == arr[i + 1])
+    {
+        povtor = true;
+    }
+}
+if (povtor)
+{
+    Console.WriteLine("Yes");
+}
+else
+{
+    Console.WriteLine("No");
+}
+*/
+
+//задача ласт
+/*
+int temp;
+for (int i = 0; i < arr.Length - 1; i++)
+{
+    for (int j = i + 1; j < arr.Length; j++)
+    {
+        if (arr[i] > arr[j])
+        {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+}
+
+bool povtor = false;
+for (int i = 0; i < arr.Length - 1; i++)
+{
+    if (arr[i] != arr[i + 1])
+    {
+        povtor = true;
+    }
+}
+if (povtor)
+{
+    Console.WriteLine("Yes");
+}
+else
+{
+    Console.WriteLine("No");
+}
+*/
+
+
+int[] arr1 = new int[] {1,3,5,7};
+int[] arr2 = new int[] { 2, 4, 6, 8 };
+int[] res = new int[8];
+int len1 = 4;
+int len2 = 4;
+//Задача 1
+/*
+int tmp = 0;
+for (int i = 0; i < arr.Length/2; i++)
+{
+    tmp = arr[i];
+    arr[i] = arr[arr.Length - 1 - i];
+    arr[arr.Length - 1 - i] = tmp;
+}
+for (int i = 0; i < arr.Length; i++)
+{
+    Console.WriteLine(arr[i]);
+}
+*/
+//Задача 2
+/*
+int len = arr.Length;
+int n = 2;
+for(int i = 0; i < n; i++)
+{
+    int tmp = arr[0];
+    for(int j = 1; j < len;j++)
+    {
+        arr[j - 1] = arr[j];
+    }
+    arr[len - 1] = tmp;
+}
+for (int i = 0; i < arr.Length; i++)
+{
+    Console.WriteLine(arr[i]);
+}
+*/
+
+//Задача 3
+/*bool res = true;
+for (int i = 0; i < arr.Length-1; i++)
+{
+    if (arr[i] > arr[i + 1])
+    {
+        res = false;
+        
+        break;
+    }
+}
+if (res)
+{
+    Console.WriteLine("yes");
+}
+else Console.WriteLine("No");
+*/
+int i = 0;
+int j = 0;
+int tmp = 0;
+while (i < len1 && j < len2)
+{
+    if (arr1[i] < arr2[j])
+    {
+        res[tmp] = arr1[i];
+        tmp += 1;
+        i += 1;
+    }
+    else
+    {
+        res[tmp] = arr2[j];
+        tmp += 1;
+        j += 1;
+    }  
+}
+if (i != len1 )
+{
+    for(int k = i; k < len1; k++)
+    {
+        res[tmp] = arr1[k];
+        tmp+=1;
+    }
+    
+
+ }else if (j != len2)
+{
+    for (int k = j; k < len1; k++)
+    {
+        res[tmp] = arr2[k];
+        tmp += 1;
+    }
+
+
+}
+for (int g = 0; g < res.Length; g++)
+{
+    Console.WriteLine(res[g]);
+}
